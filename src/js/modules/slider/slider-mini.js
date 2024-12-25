@@ -76,15 +76,16 @@ export default class MiniSlider extends Slider {
     }
 
     init() {
-        this.container.style.cssText = `
+       try {
+            this.container.style.cssText = `
             display: flex;
             flex-wrap: wrap;
             overflow: hidden;
             align-items: flex-start;
         `;
 
-        this.bindTriggers();
-        this.decorizeSlides();
+            this.bindTriggers();
+            this.decorizeSlides();
 
         if (this.autoplay) {
             this.autoplayGo();
@@ -92,14 +93,15 @@ export default class MiniSlider extends Slider {
             this.slides[0].parentNode.addEventListener('mouselave', () => {
                 this.autoplayGo();
             });
-    
+
             this.next.addEventListener('mouselave', () => {
                 this.autoplayGo();
             });
-    
+
             this.prev.addEventListener('mouselave', () => {
                 this.autoplayGo();
             });
         }
+       } catch(e) {}
     }
 }
